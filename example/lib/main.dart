@@ -10,7 +10,7 @@ import 'package:grpc/grpc.dart';
 /// main is entry point of Flutter application
 void main() {
   // Desktop platforms aren't a valid platform.
-  if (!kIsWeb) _setTargetPlatformForDesktop();
+  // if (!kIsWeb) _setTargetPlatformForDesktop();
   return runApp(MyApp());
 }
 
@@ -59,17 +59,23 @@ class _MyAppState extends State<MyApp> {
         // , options: CallOptions(timeout: Duration(seconds: 10))
         );
 
-    TabularReply response;
+    TabularReply _response;
     try {
       print('Attempting to get data...');
-      response = await stub.getTabular(TabularRequest()..unused = unused,
+      _response = await stub.getTabular(TabularRequest()..unused = unused,
           options: CallOptions(timeout: Duration(seconds: 10)));
+
+      _response?.rows?.forEach((element) {
+        while (element.cells.length < _response.headers.length) {
+          element.cells.add(TabularReply_Row_Cell());
+        }
+      });
     } catch (e) {
       print(e.toString());
     }
 
     await channel.shutdown();
-    return response;
+    return _response;
   }
 
   @override
@@ -117,14 +123,7 @@ class _MyAppState extends State<MyApp> {
                   ascending)),
         ));
 
-    columns.add(
-      DataColumn(
-          label: Text(''),
-          onSort: (int columnIndex, bool ascending) => _sort<String>(
-              (CellData d) => d.row.cells[columnIndex].value,
-              columnIndex,
-              ascending)),
-    );
+    if (0 == columns.length) columns.add(DataColumn(label: Text('')));
 
     return MaterialApp(
       // theme: ThemeData.dark(),
@@ -158,7 +157,8 @@ class _MyAppState extends State<MyApp> {
             List<DataCell> cells = [];
             cellData.row?.cells?.forEach(
                 (element) => cells.add(DataCell(Text('${element.value}'))));
-            cells.add(DataCell(ButtonBar(
+            if (0 == cellData.row?.cells?.length) cells.add(DataCell(Text('')));
+            /* cells.add(DataCell(ButtonBar(
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.delete),
@@ -169,7 +169,7 @@ class _MyAppState extends State<MyApp> {
                   },
                 ),
               ],
-            )));
+            ))); */
 
             return DataRow.byIndex(
                 index: index,

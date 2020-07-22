@@ -5,54 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca160bec-0575-4943-95ce-117072a81cb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbenum.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbgrpc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/protos/tabular.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/example_lib_main_dart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/example_lib_main_dart.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_tables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data_tables.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/data/dessert.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/AppDelegate.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Base.lproj/MainMenu.xib" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/ExampleWindow.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/PluginRegistrant.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/PluginRegistrant.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner-Bridging-Header.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner/DebugProfile.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner/DebugProfile.entitlements" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner/Release.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner/Release.entitlements" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/name_output.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data_tables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data_tables.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/mobile_paged_listview.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/stateless_datatable.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stateless_datatable.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/1.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/2.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/3.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/4.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/5.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screenshots/demo.MP4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,30 +64,30 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="23" width="1024" height="825" key="#Project_Structure" timestamp="1595232069885">
+    <state x="208" y="23" width="1024" height="825" key="#Project_Structure" timestamp="1595442235401">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state x="208" y="23" width="1024" height="825" key="#Project_Structure/0.23.1440.825@0.23.1440.825" timestamp="1595232069885" />
+    <state x="208" y="23" width="1024" height="825" key="#Project_Structure/0.23.1440.825@0.23.1440.825" timestamp="1595442235401" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594997313314">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.825@0.23.1440.825" timestamp="1594997313314" />
-    <state width="1398" height="380" key="GridCell.Tab.0.bottom" timestamp="1595331213808">
+    <state width="1398" height="241" key="GridCell.Tab.0.bottom" timestamp="1595444228099">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="380" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595331213808" />
-    <state width="1398" height="380" key="GridCell.Tab.0.center" timestamp="1595331213807">
+    <state width="1398" height="241" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595444228099" />
+    <state width="1398" height="241" key="GridCell.Tab.0.center" timestamp="1595444228098">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="380" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595331213807" />
-    <state width="1398" height="380" key="GridCell.Tab.0.left" timestamp="1595331213806">
+    <state width="1398" height="241" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595444228098" />
+    <state width="1398" height="241" key="GridCell.Tab.0.left" timestamp="1595444228097">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="380" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595331213806" />
-    <state width="1398" height="380" key="GridCell.Tab.0.right" timestamp="1595331213807">
+    <state width="1398" height="241" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595444228097" />
+    <state width="1398" height="241" key="GridCell.Tab.0.right" timestamp="1595444228098">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="380" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595331213807" />
+    <state width="1398" height="241" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595444228098" />
     <state x="273" y="128" key="IDE.errors.dialog" timestamp="1595319037898">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
@@ -138,20 +96,13 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="221" y="70" key="SettingsEditor/0.23.1440.825@0.23.1440.825" timestamp="1595266931236" />
-    <state x="421" y="186" width="598" height="490" key="find.popup" timestamp="1595320388667">
+    <state x="421" y="186" width="598" height="490" key="find.popup" timestamp="1595421472427">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state x="421" y="186" width="598" height="490" key="find.popup/0.23.1440.825@0.23.1440.825" timestamp="1595320388667" />
+    <state x="421" y="186" width="598" height="490" key="find.popup/0.23.1440.825@0.23.1440.825" timestamp="1595421472427" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/example/lib/main.dart</url>
-          <line>119</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
       </default-breakpoints>
