@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca160bec-0575-4943-95ce-117072a81cb2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/lib/getdatahttp.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/lib/getdataws.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/flutter_export_environment.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/example/lib" />
       <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
@@ -72,22 +74,22 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.825@0.23.1440.825" timestamp="1594997313314" />
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom" timestamp="1595444228099">
+    <state width="1398" height="241" key="GridCell.Tab.0.bottom" timestamp="1595452906624">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595444228099" />
-    <state width="1398" height="241" key="GridCell.Tab.0.center" timestamp="1595444228098">
+    <state width="1398" height="241" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595452906624" />
+    <state width="1398" height="241" key="GridCell.Tab.0.center" timestamp="1595452906623">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595444228098" />
-    <state width="1398" height="241" key="GridCell.Tab.0.left" timestamp="1595444228097">
+    <state width="1398" height="241" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595452906623" />
+    <state width="1398" height="241" key="GridCell.Tab.0.left" timestamp="1595452906623">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595444228097" />
-    <state width="1398" height="241" key="GridCell.Tab.0.right" timestamp="1595444228098">
+    <state width="1398" height="241" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595452906623" />
+    <state width="1398" height="241" key="GridCell.Tab.0.right" timestamp="1595452906624">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595444228098" />
+    <state width="1398" height="241" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595452906624" />
     <state x="273" y="128" key="IDE.errors.dialog" timestamp="1595319037898">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
@@ -96,10 +98,10 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="221" y="70" key="SettingsEditor/0.23.1440.825@0.23.1440.825" timestamp="1595266931236" />
-    <state x="421" y="186" width="598" height="490" key="find.popup" timestamp="1595421472427">
+    <state x="421" y="186" width="598" height="522" key="find.popup" timestamp="1595452696873">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state x="421" y="186" width="598" height="490" key="find.popup/0.23.1440.825@0.23.1440.825" timestamp="1595421472427" />
+    <state x="421" y="186" width="598" height="522" key="find.popup/0.23.1440.825@0.23.1440.825" timestamp="1595452696873" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

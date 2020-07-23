@@ -3,14 +3,15 @@ import 'dart:io' show Platform;
 import 'package:data_tables/data_tables.dart';
 import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
+import 'package:data_tables_example/getdatahttp.dart';
+import 'package:data_tables_example/getdataws.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc.dart';
 
 /// main is entry point of Flutter application
 void main() {
   // Desktop platforms aren't a valid platform.
-  // if (!kIsWeb) _setTargetPlatformForDesktop();
+  if (!kIsWeb) _setTargetPlatformForDesktop();
   return runApp(MyApp());
 }
 
@@ -46,46 +47,23 @@ class _MyAppState extends State<MyApp> {
   int _sortColumnIndex;
   bool _sortAscending = true;
 
-  Future<TabularReply> getData(int unused) async {
-    final channel = ClientChannel(
-      'localhost',
-      port: 50051,
-      options: const ChannelOptions(
-          credentials: ChannelCredentials.insecure(),
-          connectionTimeout: Duration(seconds: 5)),
-    );
-
-    final stub = TabularClient(channel
-        // , options: CallOptions(timeout: Duration(seconds: 10))
-        );
-
-    TabularReply _response;
-    try {
-      print('Attempting to get data...');
-      _response = await stub.getTabular(TabularRequest()..unused = unused,
-          options: CallOptions(timeout: Duration(seconds: 10)));
-
-      _response?.rows?.forEach((element) {
-        while (element.cells.length < _response.headers.length) {
-          element.cells.add(TabularReply_Row_Cell());
-        }
-      });
-    } catch (e) {
-      print(e.toString());
-    }
-
-    await channel.shutdown();
-    return _response;
-  }
-
   @override
   void initState() {
-    getData(0).then((value) => setState(() {
-          List<CellData> cells = new List<CellData>();
-          value?.rows?.forEach((element) => cells.add(CellData(element)));
-          _items = cells;
-          _headers = value?.headers;
-        }));
+    if (!kIsWeb) {
+      getData(0).then((value) => setState(() {
+            List<CellData> cells = new List<CellData>();
+            value?.rows?.forEach((element) => cells.add(CellData(element)));
+            _items = cells;
+            _headers = value?.headers;
+          }));
+    } else {
+      getDataHttp(0).then((value) => setState(() {
+            List<CellData> cells = new List<CellData>();
+            value?.rows?.forEach((element) => cells.add(CellData(element)));
+            _items = cells;
+            _headers = value?.headers;
+          }));
+    }
     super.initState();
   }
 
@@ -187,13 +165,23 @@ class _MyAppState extends State<MyApp> {
           sortColumnIndex: _sortColumnIndex,
           sortAscending: _sortAscending,
           onRefresh: () async {
-            getData(0).then((value) => setState(() {
-                  List<CellData> cells = new List<CellData>();
-                  value?.rows
-                      ?.forEach((element) => cells.add(CellData(element)));
-                  _items = cells;
-                  _headers = value?.headers;
-                }));
+            if (!kIsWeb) {
+              getData(0).then((value) => setState(() {
+                    List<CellData> cells = new List<CellData>();
+                    value?.rows
+                        ?.forEach((element) => cells.add(CellData(element)));
+                    _items = cells;
+                    _headers = value?.headers;
+                  }));
+            } else {
+              getDataHttp(0).then((value) => setState(() {
+                    List<CellData> cells = new List<CellData>();
+                    value?.rows
+                        ?.forEach((element) => cells.add(CellData(element)));
+                    _items = cells;
+                    _headers = value?.headers;
+                  }));
+            }
             return null;
           },
           onRowsPerPageChanged: (int value) {
