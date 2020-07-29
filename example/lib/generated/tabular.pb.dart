@@ -9,9 +9,117 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class ContextRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextRequest', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'unused')
+    ..hasRequiredFields = false
+  ;
+
+  ContextRequest._() : super();
+  factory ContextRequest() => create();
+  factory ContextRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextRequest clone() => ContextRequest()..mergeFromMessage(this);
+  ContextRequest copyWith(void Function(ContextRequest) updates) => super.copyWith((message) => updates(message as ContextRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextRequest create() => ContextRequest._();
+  ContextRequest createEmptyInstance() => create();
+  static $pb.PbList<ContextRequest> createRepeated() => $pb.PbList<ContextRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ContextRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextRequest>(create);
+  static ContextRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get unused => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set unused($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUnused() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUnused() => clearField(1);
+}
+
+class ContextReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..pPS(1, 'contexts')
+    ..hasRequiredFields = false
+  ;
+
+  ContextReply._() : super();
+  factory ContextReply() => create();
+  factory ContextReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextReply clone() => ContextReply()..mergeFromMessage(this);
+  ContextReply copyWith(void Function(ContextReply) updates) => super.copyWith((message) => updates(message as ContextReply));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextReply create() => ContextReply._();
+  ContextReply createEmptyInstance() => create();
+  static $pb.PbList<ContextReply> createRepeated() => $pb.PbList<ContextReply>();
+  @$core.pragma('dart2js:noInline')
+  static ContextReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextReply>(create);
+  static ContextReply _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get contexts => $_getList(0);
+}
+
+class TabularRequest_Parameter extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('TabularRequest.Parameter', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'column')
+    ..aOS(2, 'value')
+    ..aOS(3, 'condition')
+    ..hasRequiredFields = false
+  ;
+
+  TabularRequest_Parameter._() : super();
+  factory TabularRequest_Parameter() => create();
+  factory TabularRequest_Parameter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TabularRequest_Parameter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  TabularRequest_Parameter clone() => TabularRequest_Parameter()..mergeFromMessage(this);
+  TabularRequest_Parameter copyWith(void Function(TabularRequest_Parameter) updates) => super.copyWith((message) => updates(message as TabularRequest_Parameter));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static TabularRequest_Parameter create() => TabularRequest_Parameter._();
+  TabularRequest_Parameter createEmptyInstance() => create();
+  static $pb.PbList<TabularRequest_Parameter> createRepeated() => $pb.PbList<TabularRequest_Parameter>();
+  @$core.pragma('dart2js:noInline')
+  static TabularRequest_Parameter getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TabularRequest_Parameter>(create);
+  static TabularRequest_Parameter _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get column => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set column($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasColumn() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearColumn() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get value => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set value($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasValue() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValue() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get condition => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set condition($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCondition() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearCondition() => clearField(3);
+}
+
 class TabularRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('TabularRequest', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
-    ..a<$core.int>(1, 'unused', $pb.PbFieldType.OU3)
+    ..aOS(1, 'context')
+    ..pc<TabularRequest_Parameter>(2, 'parameters', $pb.PbFieldType.PM, subBuilder: TabularRequest_Parameter.create)
     ..hasRequiredFields = false
   ;
 
@@ -31,13 +139,16 @@ class TabularRequest extends $pb.GeneratedMessage {
   static TabularRequest _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get unused => $_getIZ(0);
+  $core.String get context => $_getSZ(0);
   @$pb.TagNumber(1)
-  set unused($core.int v) { $_setUnsignedInt32(0, v); }
+  set context($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasUnused() => $_has(0);
+  $core.bool hasContext() => $_has(0);
   @$pb.TagNumber(1)
-  void clearUnused() => clearField(1);
+  void clearContext() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<TabularRequest_Parameter> get parameters => $_getList(1);
 }
 
 class TabularReply_Header extends $pb.GeneratedMessage {
@@ -139,8 +250,9 @@ class TabularReply_Row extends $pb.GeneratedMessage {
 
 class TabularReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('TabularReply', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
-    ..pc<TabularReply_Header>(1, 'headers', $pb.PbFieldType.PM, subBuilder: TabularReply_Header.create)
-    ..pc<TabularReply_Row>(2, 'rows', $pb.PbFieldType.PM, subBuilder: TabularReply_Row.create)
+    ..aOS(1, 'label')
+    ..pc<TabularReply_Header>(2, 'headers', $pb.PbFieldType.PM, subBuilder: TabularReply_Header.create)
+    ..pc<TabularReply_Row>(3, 'rows', $pb.PbFieldType.PM, subBuilder: TabularReply_Row.create)
     ..hasRequiredFields = false
   ;
 
@@ -160,9 +272,18 @@ class TabularReply extends $pb.GeneratedMessage {
   static TabularReply _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<TabularReply_Header> get headers => $_getList(0);
+  $core.String get label => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set label($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasLabel() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLabel() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<TabularReply_Row> get rows => $_getList(1);
+  $core.List<TabularReply_Header> get headers => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<TabularReply_Row> get rows => $_getList(2);
 }
 

@@ -5,18 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca160bec-0575-4943-95ce-117072a81cb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/lib/getdatahttp.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/getdataws.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/lib/datawidget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_tables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/data_tables.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pbgrpc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbgrpc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/getdatahttp.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/get_data_web.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/getdataws.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/get_data_ws.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/protos/tabular.proto" beforeDir="false" afterPath="$PROJECT_DIR$/example/protos/tabular.proto" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,6 +57,7 @@
       <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -74,22 +85,26 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.825@0.23.1440.825" timestamp="1594997313314" />
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom" timestamp="1595452906624">
+    <state x="408" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596017181142">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1595452906624" />
-    <state width="1398" height="241" key="GridCell.Tab.0.center" timestamp="1595452906623">
+    <state x="408" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.825@0.23.1440.825" timestamp="1596017181142" />
+    <state width="1398" height="174" key="GridCell.Tab.0.bottom" timestamp="1596023337252">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1595452906623" />
-    <state width="1398" height="241" key="GridCell.Tab.0.left" timestamp="1595452906623">
+    <state width="1398" height="174" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1596023337252" />
+    <state width="1398" height="174" key="GridCell.Tab.0.center" timestamp="1596023337251">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1595452906623" />
-    <state width="1398" height="241" key="GridCell.Tab.0.right" timestamp="1595452906624">
+    <state width="1398" height="174" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1596023337251" />
+    <state width="1398" height="174" key="GridCell.Tab.0.left" timestamp="1596023337249">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="241" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1595452906624" />
+    <state width="1398" height="174" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1596023337249" />
+    <state width="1398" height="174" key="GridCell.Tab.0.right" timestamp="1596023337252">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state width="1398" height="174" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1596023337252" />
     <state x="273" y="128" key="IDE.errors.dialog" timestamp="1595319037898">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
@@ -102,6 +117,10 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="421" y="186" width="598" height="522" key="find.popup/0.23.1440.825@0.23.1440.825" timestamp="1595452696873" />
+    <state x="385" y="172" width="670" height="676" key="search.everywhere.popup" timestamp="1596018863767">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state x="385" y="172" width="670" height="676" key="search.everywhere.popup/0.23.1440.825@0.23.1440.825" timestamp="1596018863767" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
