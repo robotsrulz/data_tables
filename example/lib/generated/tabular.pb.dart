@@ -40,9 +40,85 @@ class ContextRequest extends $pb.GeneratedMessage {
   void clearUnused() => clearField(1);
 }
 
+class ContextReply_Group_Context extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply.Group.Context', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'name')
+    ..aOS(2, 'key')
+    ..hasRequiredFields = false
+  ;
+
+  ContextReply_Group_Context._() : super();
+  factory ContextReply_Group_Context() => create();
+  factory ContextReply_Group_Context.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextReply_Group_Context.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextReply_Group_Context clone() => ContextReply_Group_Context()..mergeFromMessage(this);
+  ContextReply_Group_Context copyWith(void Function(ContextReply_Group_Context) updates) => super.copyWith((message) => updates(message as ContextReply_Group_Context));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextReply_Group_Context create() => ContextReply_Group_Context._();
+  ContextReply_Group_Context createEmptyInstance() => create();
+  static $pb.PbList<ContextReply_Group_Context> createRepeated() => $pb.PbList<ContextReply_Group_Context>();
+  @$core.pragma('dart2js:noInline')
+  static ContextReply_Group_Context getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextReply_Group_Context>(create);
+  static ContextReply_Group_Context _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get key => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set key($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearKey() => clearField(2);
+}
+
+class ContextReply_Group extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply.Group', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'name')
+    ..pc<ContextReply_Group_Context>(2, 'contexts', $pb.PbFieldType.PM, subBuilder: ContextReply_Group_Context.create)
+    ..hasRequiredFields = false
+  ;
+
+  ContextReply_Group._() : super();
+  factory ContextReply_Group() => create();
+  factory ContextReply_Group.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextReply_Group.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextReply_Group clone() => ContextReply_Group()..mergeFromMessage(this);
+  ContextReply_Group copyWith(void Function(ContextReply_Group) updates) => super.copyWith((message) => updates(message as ContextReply_Group));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextReply_Group create() => ContextReply_Group._();
+  ContextReply_Group createEmptyInstance() => create();
+  static $pb.PbList<ContextReply_Group> createRepeated() => $pb.PbList<ContextReply_Group>();
+  @$core.pragma('dart2js:noInline')
+  static ContextReply_Group getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextReply_Group>(create);
+  static ContextReply_Group _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<ContextReply_Group_Context> get contexts => $_getList(1);
+}
+
 class ContextReply extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
-    ..pPS(1, 'contexts')
+    ..pc<ContextReply_Group>(1, 'groups', $pb.PbFieldType.PM, subBuilder: ContextReply_Group.create)
     ..hasRequiredFields = false
   ;
 
@@ -62,7 +138,7 @@ class ContextReply extends $pb.GeneratedMessage {
   static ContextReply _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get contexts => $_getList(0);
+  $core.List<ContextReply_Group> get groups => $_getList(0);
 }
 
 class TabularRequest_Parameter extends $pb.GeneratedMessage {

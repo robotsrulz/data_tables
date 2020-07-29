@@ -15,7 +15,25 @@ const ContextRequest$json = const {
 const ContextReply$json = const {
   '1': 'ContextReply',
   '2': const [
-    const {'1': 'contexts', '3': 1, '4': 3, '5': 9, '10': 'contexts'},
+    const {'1': 'groups', '3': 1, '4': 3, '5': 11, '6': '.tabular.ContextReply.Group', '10': 'groups'},
+  ],
+  '3': const [ContextReply_Group$json],
+};
+
+const ContextReply_Group$json = const {
+  '1': 'Group',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'contexts', '3': 2, '4': 3, '5': 11, '6': '.tabular.ContextReply.Group.Context', '10': 'contexts'},
+  ],
+  '3': const [ContextReply_Group_Context$json],
+};
+
+const ContextReply_Group_Context$json = const {
+  '1': 'Context',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
   ],
 };
 
