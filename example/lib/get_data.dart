@@ -14,11 +14,11 @@ Future<ContextReply> getContexts(String unused) async {
 }
 
 Future<TabularReply> getCellsData(String context,
-    [List<TabularRequest_Parameter> parameters = const []]) async {
+    [List<TabularRequest_Filter> filters = const []]) async {
 
   if (!kIsWeb) {
-    return getCellsDataWs(context, parameters);
+    return getCellsDataWs(context, filters);
   }
 
-  return getCellsDataWeb(context, parameters);
+  return getCellsDataWeb(context, filters);
 }

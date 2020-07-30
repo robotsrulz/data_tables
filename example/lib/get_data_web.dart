@@ -24,7 +24,7 @@ Future<ContextReply> getContextsWeb(String unused) async {
 }
 
 Future<TabularReply> getCellsDataWeb(String context,
-    [List<TabularRequest_Parameter> parameters = const []]) async {
+    [List<TabularRequest_Filter> filters = const []]) async {
   final channel = GrpcWebClientChannel.xhr(Uri.parse('http://localhost:51051'));
   final stub = TabularClient(channel
       // , options: CallOptions(timeout: Duration(seconds: 10))
@@ -36,7 +36,7 @@ Future<TabularReply> getCellsDataWeb(String context,
     _response = await stub.getTabular(
         TabularRequest()
           ..context = context
-          ..parameters.addAll(parameters),
+          ..parameters.addAll(filters),
         options: CallOptions(timeout: Duration(seconds: 10)));
 
     _response?.rows?.forEach((element) {

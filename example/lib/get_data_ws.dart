@@ -31,7 +31,7 @@ Future<ContextReply> getContextsWs(String unused) async {
 }
 
 Future<TabularReply> getCellsDataWs(String context,
-    [List<TabularRequest_Parameter> parameters = const []]) async {
+    [List<TabularRequest_Filter> filters = const []]) async {
   final channel = ClientChannel(
     'localhost',
     port: 50051,
@@ -50,7 +50,7 @@ Future<TabularReply> getCellsDataWs(String context,
     _response = await stub.getTabular(
         TabularRequest()
           ..context = context
-          ..parameters.addAll(parameters),
+          ..parameters.addAll(filters),
         options: CallOptions(timeout: Duration(seconds: 10)));
 
     _response?.rows?.forEach((element) {

@@ -1,11 +1,13 @@
 import 'package:data_tables/data_tables.dart';
+import 'package:data_tables_example/context_nodes.dart';
 import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
 import 'package:data_tables_example/get_data.dart';
+import 'package:empty_widget/empty_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_treeview/tree_view.dart';
-import 'package:tuple/tuple.dart';
+import 'package:provider/provider.dart';
 
 class DataWidget extends StatefulWidget {
   DataWidget({Key key}) : super(key: key);
@@ -21,17 +23,11 @@ class CellData {
   bool selected = false;
 }
 
-class ContextGroup {
-  ContextGroup(this.name);
-
-  String name;
-  List<Tuple2<String,String>> contexts = [];
-}
-
 class _DataWidgetState extends State<DataWidget> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   int _sortColumnIndex;
   bool _sortAscending = true;
+  String _currentContext;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -55,23 +51,8 @@ class _DataWidgetState extends State<DataWidget> {
 
   @override
   void initState() {
-    getContexts("fixme").then((value) {
-      setState(() => value.groups.forEach((element) {
-            var group = ContextGroup(element.name);
-            element.contexts.forEach((element) => group.contexts.add(Tuple2<String, String>(element.name, element.key)));
-            _contexts.add(group);
-          }));
-
-      if (_contexts.length > 0 && _contexts[0].contexts.length > 0) {
-        _context = _contexts[0].contexts[0].item1;
-
-        if (_context.length > 0) {
-          getCellsData(_context).then((value) => _populateTable(value));
-        }
-      }
-    });
-
     _treeViewController = TreeViewController();
+    WidgetsBinding.instance.addPostFrameCallback(_onLayoutDone);
     super.initState();
   }
 
@@ -96,12 +77,14 @@ class _DataWidgetState extends State<DataWidget> {
   List<CellData> _items = [];
   List<TabularReply_Header> _headers = [];
   String _headerText = "";
-  String _context = "";
   int _rowsOffset = 0;
-
-  List<ContextGroup> _contexts = [];
   TreeViewController _treeViewController;
-  String _selectedNode;
+
+  _onLayoutDone(_) {
+    if (_currentContext?.length ?? 0 == 0) {
+      // _openDrawer();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,25 +100,8 @@ class _DataWidgetState extends State<DataWidget> {
 
     if (0 == columns.length) columns.add(DataColumn(label: Text('')));
 
-    List<Node> _nodes = [];
-    _contexts.forEach((element) {
-      List<Node> _leafs = [];
-      element.contexts.forEach((context) {
-        _leafs.add(Node(
-          label: context.item1,
-          key: context.item2,
-          icon: NodeIcon.fromIconData(Icons.cloud_download),
-        ));
-      });
-      _nodes.add(Node(
-        label: element.name,
-        key: element.name,
-        icon: NodeIcon.fromIconData(Icons.input),
-        children: _leafs,
-      ));
-    });
     _treeViewController = _treeViewController.copyWith(
-      children: _nodes,
+      children: Provider.of<ContextNodes>(context).nodes,
     );
 
     TreeViewTheme _treeViewTheme = TreeViewTheme(
@@ -175,9 +141,9 @@ class _DataWidgetState extends State<DataWidget> {
             ),
     );
 
-    return Scaffold(
-      key: _scaffoldKey,
-      body: NativeDataTable.builder(
+    NativeDataTable _table;
+    if (_items?.length > 0) {
+      _table = NativeDataTable.builder(
         rowsPerPage: _rowsPerPage,
         itemCount: _items?.length ?? 0,
         firstRowIndex: _rowsOffset,
@@ -220,8 +186,9 @@ class _DataWidgetState extends State<DataWidget> {
         sortColumnIndex: _sortColumnIndex,
         sortAscending: _sortAscending,
         onRefresh: () async {
-          if (_context.length > 0) {
-            getCellsData(_context).then((value) => _populateTable(value));
+          if (_currentContext.length > 0) {
+            getCellsData(_currentContext)
+                .then((value) => _populateTable(value));
           }
           return null;
         },
@@ -269,21 +236,45 @@ class _DataWidgetState extends State<DataWidget> {
         mobileIsLoading: CircularProgressIndicator(),
         noItems: Text("No Items Found"),
         columns: columns,
-      ),
+      );
+    }
+
+    return Scaffold(
+      key: _scaffoldKey,
+      body: _table ??
+          Center(
+              child: Container(
+                  height: 500,
+                  width: 350,
+                  child: EmptyListWidget(
+                      image: null,
+                      packageImage: PackageImage.Image_1,
+                      title: 'Ого, как пусто!',
+                      subTitle: 'Нажми куда-нибудь...',
+                      titleTextStyle: Theme.of(context)
+                          .typography
+                          .dense
+                          .display1
+                          .copyWith(color: Color(0xff9da9c7)),
+                      subtitleTextStyle: Theme.of(context)
+                          .typography
+                          .dense
+                          .body2
+                          .copyWith(color: Color(0xffabb8d6))))),
       // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      // floatingActionButton: Container(
-      //  padding: EdgeInsets.only(bottom: 30.0),
-      //  child: Align(
-      //    alignment: Alignment.bottomRight,
-      //    child: FloatingActionButton.extended(
-      //      onPressed: () {
-      //        _openDrawer();
-      //      },
-      //      icon: Icon(Icons.apps),
-      //      label: Text('Разделы'),
-      //    ),
-      //  ),
-      // ),
+      floatingActionButton: _table == null ? Container(
+        padding: EdgeInsets.only(bottom: 30.0),
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton.extended(
+            onPressed: () {
+              _openDrawer();
+            },
+            icon: Icon(Icons.accessibility),
+            label: Text('Cюда!'),
+          ),
+        ),
+      ) : null,
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -295,7 +286,10 @@ class _DataWidgetState extends State<DataWidget> {
           onNodeTap: (key) {
             debugPrint('Selected: $key');
             setState(() {
-              _selectedNode = key;
+              if (_currentContext != key) {
+                _rowsOffset = 0;
+              }
+              _currentContext = key;
               _treeViewController =
                   _treeViewController.copyWith(selectedKey: key);
             });

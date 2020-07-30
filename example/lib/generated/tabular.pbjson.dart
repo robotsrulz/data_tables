@@ -34,6 +34,36 @@ const ContextReply_Group_Context$json = const {
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'filters', '3': 3, '4': 3, '5': 11, '6': '.tabular.ContextReply.Group.Context.Filter', '10': 'filters'},
+    const {'1': 'subContexts', '3': 4, '4': 3, '5': 11, '6': '.tabular.ContextReply.Group.Context.SubContext', '10': 'subContexts'},
+  ],
+  '3': const [ContextReply_Group_Context_Filter$json, ContextReply_Group_Context_SubContext$json],
+};
+
+const ContextReply_Group_Context_Filter$json = const {
+  '1': 'Filter',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'type', '3': 3, '4': 1, '5': 14, '6': '.tabular.ContextReply.Group.Context.Filter.FilterType', '10': 'type'},
+    const {'1': 'values', '3': 4, '4': 3, '5': 9, '10': 'values'},
+  ],
+  '4': const [ContextReply_Group_Context_Filter_FilterType$json],
+};
+
+const ContextReply_Group_Context_Filter_FilterType$json = const {
+  '1': 'FilterType',
+  '2': const [
+    const {'1': 'BOOLEAN', '2': 0},
+    const {'1': 'VALUE', '2': 1},
+    const {'1': 'ENUM', '2': 2},
+  ],
+};
+
+const ContextReply_Group_Context_SubContext$json = const {
+  '1': 'SubContext',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
   ],
 };
 
@@ -41,17 +71,16 @@ const TabularRequest$json = const {
   '1': 'TabularRequest',
   '2': const [
     const {'1': 'context', '3': 1, '4': 1, '5': 9, '10': 'context'},
-    const {'1': 'parameters', '3': 2, '4': 3, '5': 11, '6': '.tabular.TabularRequest.Parameter', '10': 'parameters'},
+    const {'1': 'parameters', '3': 2, '4': 3, '5': 11, '6': '.tabular.TabularRequest.Filter', '10': 'parameters'},
   ],
-  '3': const [TabularRequest_Parameter$json],
+  '3': const [TabularRequest_Filter$json],
 };
 
-const TabularRequest_Parameter$json = const {
-  '1': 'Parameter',
+const TabularRequest_Filter$json = const {
+  '1': 'Filter',
   '2': const [
-    const {'1': 'column', '3': 1, '4': 1, '5': 9, '10': 'column'},
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
     const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
-    const {'1': 'condition', '3': 3, '4': 1, '5': 9, '10': 'condition'},
   ],
 };
 

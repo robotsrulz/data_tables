@@ -67,7 +67,8 @@ class StatelessDataTable extends StatelessWidget {
       defaultRowsPerPage,
       defaultRowsPerPage * 2,
       defaultRowsPerPage * 5,
-      defaultRowsPerPage * 10
+      defaultRowsPerPage * 10,
+      defaultRowsPerPage * 50
     ],
     this.onRowsPerPageChanged,
     this.dragStartBehavior = DragStartBehavior.down,
