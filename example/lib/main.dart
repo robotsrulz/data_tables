@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'datawidget.dart';
+import 'filters.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: _title,
       home: DataWidget(),
+      routes: <String, WidgetBuilder>{
+        '/filters': (BuildContext context) => new FiltersPage(),
+      },
     );
   }
 }

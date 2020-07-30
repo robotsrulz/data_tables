@@ -246,6 +246,10 @@ class _DataWidgetState extends State<DataWidget> {
               _openDrawer();
             },
           ),
+          IconButton(
+            icon: Icon(Icons.filter_list),
+            onPressed: () => Navigator.of(context).pushNamed('/filters'),
+          ),
         ],
         selectedActions: <Widget>[
           IconButton(

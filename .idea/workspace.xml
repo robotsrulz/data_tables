@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca160bec-0575-4943-95ce-117072a81cb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/lib/get_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/lib/filters.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/datawidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/datawidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/protos/tabular.proto" beforeDir="false" afterPath="$PROJECT_DIR$/example/protos/tabular.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,22 +84,26 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state x="408" y="178" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.825@0.23.1440.825" timestamp="1596017181142" />
-    <state width="1398" height="174" key="GridCell.Tab.0.bottom" timestamp="1596041291974">
+    <state x="297" y="23" key="CommitChangelistDialog2" timestamp="1596101335577">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="174" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1596041291974" />
-    <state width="1398" height="174" key="GridCell.Tab.0.center" timestamp="1596041291973">
+    <state x="297" y="23" key="CommitChangelistDialog2/0.23.1440.825@0.23.1440.825" timestamp="1596101335577" />
+    <state width="1398" height="174" key="GridCell.Tab.0.bottom" timestamp="1596104078063">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="174" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1596041291973" />
-    <state width="1398" height="174" key="GridCell.Tab.0.left" timestamp="1596041291972">
+    <state width="1398" height="174" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1596104078063" />
+    <state width="1398" height="174" key="GridCell.Tab.0.center" timestamp="1596104078061">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="174" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1596041291972" />
-    <state width="1398" height="174" key="GridCell.Tab.0.right" timestamp="1596041291973">
+    <state width="1398" height="174" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1596104078061" />
+    <state width="1398" height="174" key="GridCell.Tab.0.left" timestamp="1596104078058">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="174" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1596041291973" />
+    <state width="1398" height="174" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1596104078058" />
+    <state width="1398" height="174" key="GridCell.Tab.0.right" timestamp="1596104078062">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state width="1398" height="174" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1596104078062" />
     <state x="273" y="128" key="IDE.errors.dialog" timestamp="1595319037898">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
