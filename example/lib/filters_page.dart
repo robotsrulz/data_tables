@@ -20,15 +20,12 @@ class _FiltersState extends State<FiltersPage> {
   Widget build(BuildContext context) {
     List<Widget> _filters = [];
     ContextMetadata _metadata =
-      Provider.of<ContextMetadata>(context, listen: false);
+        Provider.of<ContextMetadata>(context, listen: false);
     var _entry = _metadata.entries[_metadata.currentContext];
 
     _entry?.reply?.filters?.forEach((element) {
       switch (element.type) {
         case ContextMetadataReply_Filter_FilterType.BOOLEAN:
-          print(
-              "${element.name}[${element.key}] set value to ${_entry.filterValues[element.key].toString()}");
-
           _filters.add(Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,23 +33,52 @@ class _FiltersState extends State<FiltersPage> {
                 Text('${element.name}'),
                 Switch(
                   value:
-                  _entry.filterValues[element.key]?.toLowerCase() == "true",
-                  onChanged: (value) {
-                    setState(() {
-                      _metadata.entries[_metadata.currentContext]
-                          .filterValues[element.key] = value.toString();
-                      print(
-                          "Set ${element.name}[${element.key}] to ${value.toString()}");
-                    });
-                  },
+                      _entry.filterValues[element.key]?.toLowerCase() == "true",
+                  onChanged: (value) => setState(() {
+                    _entry.filterValues[element.key] = value.toString();
+                  }),
                   activeTrackColor: Colors.lightGreenAccent,
                   activeColor: Colors.green,
                 ),
               ]));
           break;
         case ContextMetadataReply_Filter_FilterType.VALUE:
+          _filters.add(TextFormField(
+            decoration: InputDecoration(
+                labelText: '${element.name}', hintText: '${element.key}'),
+            initialValue: _entry.filterValues[element.key] ?? "",
+            onChanged: (value) => setState(() {
+              _entry.filterValues[element.key] = value;
+            }),
+          ));
           break;
         case ContextMetadataReply_Filter_FilterType.ENUM:
+          _filters.add(Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text('${element.name}'),
+                DropdownButton<String>(
+                  value: _entry.filterValues[element.key] ?? "",
+                  icon: Icon(Icons.arrow_downward),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: TextStyle(color: Colors.green),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.lightGreen,
+                  ),
+                  onChanged: (value) => setState(() {
+                    _entry.filterValues[element.key] = value;
+                  }),
+                  items: <String>['', ...element.values]
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                )
+              ]));
           break;
       }
     });
@@ -64,8 +90,9 @@ class _FiltersState extends State<FiltersPage> {
         body: Container(
             padding: const EdgeInsets.only(left: 5.0, right: 5.0),
             child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: _filters)));
   }
 
