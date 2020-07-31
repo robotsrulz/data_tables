@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_treeview/tree_view.dart';
 import 'package:provider/provider.dart';
 
+import 'context_metadata.dart';
+
 class DataWidget extends StatefulWidget {
   DataWidget({Key key}) : super(key: key);
 
@@ -27,7 +29,6 @@ class _DataWidgetState extends State<DataWidget> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   int _sortColumnIndex;
   bool _sortAscending = true;
-  String _currentContext;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -81,7 +82,7 @@ class _DataWidgetState extends State<DataWidget> {
   TreeViewController _treeViewController;
 
   _onLayoutDone(_) {
-    if (_currentContext?.length ?? 0 == 0) {
+    if (Provider.of<ContextMetadata>(context, listen: false).currentContext?.length ?? 0 == 0) {
       // _openDrawer();
     }
   }
@@ -186,7 +187,8 @@ class _DataWidgetState extends State<DataWidget> {
         sortColumnIndex: _sortColumnIndex,
         sortAscending: _sortAscending,
         onRefresh: () async {
-          if (_currentContext.length > 0) {
+          final _currentContext = Provider.of<ContextMetadata>(context, listen: false).currentContext;
+          if (_currentContext?.length ?? 0 > 0) {
             getCellsData(_currentContext)
                 .then((value) => _populateTable(value));
           }
@@ -286,10 +288,10 @@ class _DataWidgetState extends State<DataWidget> {
           onNodeTap: (key) {
             debugPrint('Selected: $key');
             setState(() {
-              if (_currentContext != key) {
+              if (Provider.of<ContextMetadata>(context, listen: false).currentContext != key) {
                 _rowsOffset = 0;
               }
-              _currentContext = key;
+              Provider.of<ContextMetadata>(context, listen: false).currentContext = key;
               _treeViewController =
                   _treeViewController.copyWith(selectedKey: key);
             });

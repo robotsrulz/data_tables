@@ -9,20 +9,20 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class ContextReply_Group_Context_Filter_FilterType extends $pb.ProtobufEnum {
-  static const ContextReply_Group_Context_Filter_FilterType BOOLEAN = ContextReply_Group_Context_Filter_FilterType._(0, 'BOOLEAN');
-  static const ContextReply_Group_Context_Filter_FilterType VALUE = ContextReply_Group_Context_Filter_FilterType._(1, 'VALUE');
-  static const ContextReply_Group_Context_Filter_FilterType ENUM = ContextReply_Group_Context_Filter_FilterType._(2, 'ENUM');
+class ContextMetadataReply_Filter_FilterType extends $pb.ProtobufEnum {
+  static const ContextMetadataReply_Filter_FilterType BOOLEAN = ContextMetadataReply_Filter_FilterType._(0, 'BOOLEAN');
+  static const ContextMetadataReply_Filter_FilterType VALUE = ContextMetadataReply_Filter_FilterType._(1, 'VALUE');
+  static const ContextMetadataReply_Filter_FilterType ENUM = ContextMetadataReply_Filter_FilterType._(2, 'ENUM');
 
-  static const $core.List<ContextReply_Group_Context_Filter_FilterType> values = <ContextReply_Group_Context_Filter_FilterType> [
+  static const $core.List<ContextMetadataReply_Filter_FilterType> values = <ContextMetadataReply_Filter_FilterType> [
     BOOLEAN,
     VALUE,
     ENUM,
   ];
 
-  static final $core.Map<$core.int, ContextReply_Group_Context_Filter_FilterType> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static ContextReply_Group_Context_Filter_FilterType valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, ContextMetadataReply_Filter_FilterType> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static ContextMetadataReply_Filter_FilterType valueOf($core.int value) => _byValue[value];
 
-  const ContextReply_Group_Context_Filter_FilterType._($core.int v, $core.String n) : super(v, n);
+  const ContextMetadataReply_Filter_FilterType._($core.int v, $core.String n) : super(v, n);
 }
 

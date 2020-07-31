@@ -9,9 +9,9 @@ class ContextNodes with ChangeNotifier {
   ContextNodes() {
     getContexts("fixme").then((value) {
       value?.groups?.forEach((element) {
-        List<Node> _leafs = [];
+        List<Node> _leaves = [];
         element.contexts.forEach((element) {
-          _leafs.add(Node(
+          _leaves.add(Node(
             label: element.name,
             key: element.key,
             icon: NodeIcon.fromIconData(Icons.cloud_download),
@@ -21,7 +21,7 @@ class ContextNodes with ChangeNotifier {
           label: element.name,
           key: element.name,
           icon: NodeIcon.fromIconData(Icons.collections),
-          children: _leafs,
+          children: _leaves,
         ));
       });
       notifyListeners();

@@ -44,29 +44,60 @@ class ContextRequest extends $pb.GeneratedMessage {
   void clearUnused() => clearField(1);
 }
 
-class ContextReply_Group_Context_Filter extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply.Group.Context.Filter', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+class ContextMetadataRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextMetadataRequest', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'key')
+    ..hasRequiredFields = false
+  ;
+
+  ContextMetadataRequest._() : super();
+  factory ContextMetadataRequest() => create();
+  factory ContextMetadataRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextMetadataRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextMetadataRequest clone() => ContextMetadataRequest()..mergeFromMessage(this);
+  ContextMetadataRequest copyWith(void Function(ContextMetadataRequest) updates) => super.copyWith((message) => updates(message as ContextMetadataRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextMetadataRequest create() => ContextMetadataRequest._();
+  ContextMetadataRequest createEmptyInstance() => create();
+  static $pb.PbList<ContextMetadataRequest> createRepeated() => $pb.PbList<ContextMetadataRequest>();
+  @$core.pragma('dart2js:noInline')
+  static ContextMetadataRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextMetadataRequest>(create);
+  static ContextMetadataRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get key => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set key($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKey() => clearField(1);
+}
+
+class ContextMetadataReply_Filter extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextMetadataReply.Filter', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'name')
     ..aOS(2, 'key')
-    ..e<ContextReply_Group_Context_Filter_FilterType>(3, 'type', $pb.PbFieldType.OE, defaultOrMaker: ContextReply_Group_Context_Filter_FilterType.BOOLEAN, valueOf: ContextReply_Group_Context_Filter_FilterType.valueOf, enumValues: ContextReply_Group_Context_Filter_FilterType.values)
+    ..e<ContextMetadataReply_Filter_FilterType>(3, 'type', $pb.PbFieldType.OE, defaultOrMaker: ContextMetadataReply_Filter_FilterType.BOOLEAN, valueOf: ContextMetadataReply_Filter_FilterType.valueOf, enumValues: ContextMetadataReply_Filter_FilterType.values)
     ..pPS(4, 'values')
     ..hasRequiredFields = false
   ;
 
-  ContextReply_Group_Context_Filter._() : super();
-  factory ContextReply_Group_Context_Filter() => create();
-  factory ContextReply_Group_Context_Filter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ContextReply_Group_Context_Filter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  ContextReply_Group_Context_Filter clone() => ContextReply_Group_Context_Filter()..mergeFromMessage(this);
-  ContextReply_Group_Context_Filter copyWith(void Function(ContextReply_Group_Context_Filter) updates) => super.copyWith((message) => updates(message as ContextReply_Group_Context_Filter));
+  ContextMetadataReply_Filter._() : super();
+  factory ContextMetadataReply_Filter() => create();
+  factory ContextMetadataReply_Filter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextMetadataReply_Filter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextMetadataReply_Filter clone() => ContextMetadataReply_Filter()..mergeFromMessage(this);
+  ContextMetadataReply_Filter copyWith(void Function(ContextMetadataReply_Filter) updates) => super.copyWith((message) => updates(message as ContextMetadataReply_Filter));
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ContextReply_Group_Context_Filter create() => ContextReply_Group_Context_Filter._();
-  ContextReply_Group_Context_Filter createEmptyInstance() => create();
-  static $pb.PbList<ContextReply_Group_Context_Filter> createRepeated() => $pb.PbList<ContextReply_Group_Context_Filter>();
+  static ContextMetadataReply_Filter create() => ContextMetadataReply_Filter._();
+  ContextMetadataReply_Filter createEmptyInstance() => create();
+  static $pb.PbList<ContextMetadataReply_Filter> createRepeated() => $pb.PbList<ContextMetadataReply_Filter>();
   @$core.pragma('dart2js:noInline')
-  static ContextReply_Group_Context_Filter getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextReply_Group_Context_Filter>(create);
-  static ContextReply_Group_Context_Filter _defaultInstance;
+  static ContextMetadataReply_Filter getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextMetadataReply_Filter>(create);
+  static ContextMetadataReply_Filter _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
@@ -87,9 +118,9 @@ class ContextReply_Group_Context_Filter extends $pb.GeneratedMessage {
   void clearKey() => clearField(2);
 
   @$pb.TagNumber(3)
-  ContextReply_Group_Context_Filter_FilterType get type => $_getN(2);
+  ContextMetadataReply_Filter_FilterType get type => $_getN(2);
   @$pb.TagNumber(3)
-  set type(ContextReply_Group_Context_Filter_FilterType v) { setField(3, v); }
+  set type(ContextMetadataReply_Filter_FilterType v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasType() => $_has(2);
   @$pb.TagNumber(3)
@@ -99,26 +130,26 @@ class ContextReply_Group_Context_Filter extends $pb.GeneratedMessage {
   $core.List<$core.String> get values => $_getList(3);
 }
 
-class ContextReply_Group_Context_SubContext extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply.Group.Context.SubContext', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+class ContextMetadataReply_SubContext extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextMetadataReply.SubContext', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'name')
     ..hasRequiredFields = false
   ;
 
-  ContextReply_Group_Context_SubContext._() : super();
-  factory ContextReply_Group_Context_SubContext() => create();
-  factory ContextReply_Group_Context_SubContext.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ContextReply_Group_Context_SubContext.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  ContextReply_Group_Context_SubContext clone() => ContextReply_Group_Context_SubContext()..mergeFromMessage(this);
-  ContextReply_Group_Context_SubContext copyWith(void Function(ContextReply_Group_Context_SubContext) updates) => super.copyWith((message) => updates(message as ContextReply_Group_Context_SubContext));
+  ContextMetadataReply_SubContext._() : super();
+  factory ContextMetadataReply_SubContext() => create();
+  factory ContextMetadataReply_SubContext.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextMetadataReply_SubContext.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextMetadataReply_SubContext clone() => ContextMetadataReply_SubContext()..mergeFromMessage(this);
+  ContextMetadataReply_SubContext copyWith(void Function(ContextMetadataReply_SubContext) updates) => super.copyWith((message) => updates(message as ContextMetadataReply_SubContext));
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static ContextReply_Group_Context_SubContext create() => ContextReply_Group_Context_SubContext._();
-  ContextReply_Group_Context_SubContext createEmptyInstance() => create();
-  static $pb.PbList<ContextReply_Group_Context_SubContext> createRepeated() => $pb.PbList<ContextReply_Group_Context_SubContext>();
+  static ContextMetadataReply_SubContext create() => ContextMetadataReply_SubContext._();
+  ContextMetadataReply_SubContext createEmptyInstance() => create();
+  static $pb.PbList<ContextMetadataReply_SubContext> createRepeated() => $pb.PbList<ContextMetadataReply_SubContext>();
   @$core.pragma('dart2js:noInline')
-  static ContextReply_Group_Context_SubContext getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextReply_Group_Context_SubContext>(create);
-  static ContextReply_Group_Context_SubContext _defaultInstance;
+  static ContextMetadataReply_SubContext getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextMetadataReply_SubContext>(create);
+  static ContextMetadataReply_SubContext _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get name => $_getSZ(0);
@@ -130,12 +161,39 @@ class ContextReply_Group_Context_SubContext extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 }
 
+class ContextMetadataReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextMetadataReply', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..pc<ContextMetadataReply_Filter>(1, 'filters', $pb.PbFieldType.PM, subBuilder: ContextMetadataReply_Filter.create)
+    ..pc<ContextMetadataReply_SubContext>(2, 'subContexts', $pb.PbFieldType.PM, protoName: 'subContexts', subBuilder: ContextMetadataReply_SubContext.create)
+    ..hasRequiredFields = false
+  ;
+
+  ContextMetadataReply._() : super();
+  factory ContextMetadataReply() => create();
+  factory ContextMetadataReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ContextMetadataReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ContextMetadataReply clone() => ContextMetadataReply()..mergeFromMessage(this);
+  ContextMetadataReply copyWith(void Function(ContextMetadataReply) updates) => super.copyWith((message) => updates(message as ContextMetadataReply));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ContextMetadataReply create() => ContextMetadataReply._();
+  ContextMetadataReply createEmptyInstance() => create();
+  static $pb.PbList<ContextMetadataReply> createRepeated() => $pb.PbList<ContextMetadataReply>();
+  @$core.pragma('dart2js:noInline')
+  static ContextMetadataReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ContextMetadataReply>(create);
+  static ContextMetadataReply _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<ContextMetadataReply_Filter> get filters => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.List<ContextMetadataReply_SubContext> get subContexts => $_getList(1);
+}
+
 class ContextReply_Group_Context extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextReply.Group.Context', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'name')
     ..aOS(2, 'key')
-    ..pc<ContextReply_Group_Context_Filter>(3, 'filters', $pb.PbFieldType.PM, subBuilder: ContextReply_Group_Context_Filter.create)
-    ..pc<ContextReply_Group_Context_SubContext>(4, 'subContexts', $pb.PbFieldType.PM, protoName: 'subContexts', subBuilder: ContextReply_Group_Context_SubContext.create)
     ..hasRequiredFields = false
   ;
 
@@ -171,12 +229,6 @@ class ContextReply_Group_Context extends $pb.GeneratedMessage {
   $core.bool hasKey() => $_has(1);
   @$pb.TagNumber(2)
   void clearKey() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<ContextReply_Group_Context_Filter> get filters => $_getList(2);
-
-  @$pb.TagNumber(4)
-  $core.List<ContextReply_Group_Context_SubContext> get subContexts => $_getList(3);
 }
 
 class ContextReply_Group extends $pb.GeneratedMessage {

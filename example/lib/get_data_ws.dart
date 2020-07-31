@@ -2,18 +2,35 @@ import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
 import 'package:grpc/grpc.dart';
 
-Future<ContextReply> getContextsWs(String unused) async {
-  final channel = ClientChannel(
-    'localhost',
-    port: 50051,
-    options: const ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
-        connectionTimeout: Duration(seconds: 5)),
-  );
+ClientChannel getChannel() => ClientChannel(
+  'localhost',
+  port: 50051,
+  options: const ChannelOptions(
+      credentials: ChannelCredentials.insecure(),
+      connectionTimeout: Duration(seconds: 5)),
+);
 
-  final stub = TabularClient(channel
-    // , options: CallOptions(timeout: Duration(seconds: 10))
-  );
+Future<ContextMetadataReply> getContextMetadataWs(String key) async {
+  final channel = getChannel();
+  final stub = TabularClient(channel);
+
+  ContextMetadataReply _response;
+  try {
+    print('Attempting to get contexts...');
+    _response = await stub.getContextMetadata(
+        ContextMetadataRequest()..key = key,
+        options: CallOptions(timeout: Duration(seconds: 10)));
+  } catch (e) {
+    print(e.toString());
+  }
+
+  await channel.shutdown();
+  return _response;
+}
+
+Future<ContextReply> getContextsWs(String unused) async {
+  final channel = getChannel();
+  final stub = TabularClient(channel);
 
   ContextReply _response;
   try {
@@ -32,17 +49,9 @@ Future<ContextReply> getContextsWs(String unused) async {
 
 Future<TabularReply> getCellsDataWs(String context,
     [List<TabularRequest_Filter> filters = const []]) async {
-  final channel = ClientChannel(
-    'localhost',
-    port: 50051,
-    options: const ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
-        connectionTimeout: Duration(seconds: 5)),
-  );
 
-  final stub = TabularClient(channel
-      // , options: CallOptions(timeout: Duration(seconds: 10))
-      );
+  final channel = getChannel();
+  final stub = TabularClient(channel);
 
   TabularReply _response;
   try {

@@ -22,3 +22,12 @@ Future<TabularReply> getCellsData(String context,
 
   return getCellsDataWeb(context, filters);
 }
+
+Future<ContextMetadataReply> getContextMetadata(String key) async {
+
+  if (!kIsWeb) {
+    return getContextMetadataWs(key);
+  }
+
+  return getContextMetadataWeb(key);
+}

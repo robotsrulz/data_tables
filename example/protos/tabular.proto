@@ -11,35 +11,43 @@ package tabular;
 service Tabular {
   rpc GetTabular (TabularRequest) returns (TabularReply) {}
   rpc GetContexts (ContextRequest) returns (ContextReply) {}
+  rpc GetContextMetadata (ContextMetadataRequest) returns (ContextMetadataReply) {}
 }
 
 message ContextRequest {
   string unused = 1;
 }
 
+message ContextMetadataRequest {
+  string key = 1;
+}
+
+message ContextMetadataReply {
+  message Filter {
+    enum FilterType {
+      BOOLEAN = 0;
+      VALUE = 1;
+      ENUM = 2;
+    }
+
+    string name = 1;
+    string key = 2;
+    FilterType type = 3;
+    repeated string values = 4;
+  }
+
+  message SubContext {
+    string name = 1;
+  }
+  repeated Filter filters = 1;
+  repeated SubContext subContexts = 2;
+}
+
 message ContextReply {
   message Group {
     message Context {
-      message Filter {
-        enum FilterType {
-          BOOLEAN = 0;
-          VALUE = 1;
-          ENUM = 2;
-        }
-
-        string name = 1;
-        string key = 2;
-        FilterType type = 3;
-        repeated string values = 4;
-      }
-
-      message SubContext {
-        string name = 1;
-      }
       string name = 1;
       string key = 2;
-      repeated Filter filters = 3;
-      repeated SubContext subContexts = 4;
     }
     string name = 1;
     repeated Context contexts = 2;

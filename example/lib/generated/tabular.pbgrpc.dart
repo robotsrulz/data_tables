@@ -24,6 +24,12 @@ class TabularClient extends $grpc.Client {
           '/tabular.Tabular/GetContexts',
           ($0.ContextRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.ContextReply.fromBuffer(value));
+  static final _$getContextMetadata =
+      $grpc.ClientMethod<$0.ContextMetadataRequest, $0.ContextMetadataReply>(
+          '/tabular.Tabular/GetContextMetadata',
+          ($0.ContextMetadataRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.ContextMetadataReply.fromBuffer(value));
 
   TabularClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -40,6 +46,15 @@ class TabularClient extends $grpc.Client {
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getContexts, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.ContextMetadataReply> getContextMetadata(
+      $0.ContextMetadataRequest request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(
+        _$getContextMetadata, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -63,6 +78,15 @@ abstract class TabularServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ContextRequest.fromBuffer(value),
         ($0.ContextReply value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.ContextMetadataRequest, $0.ContextMetadataReply>(
+            'GetContextMetadata',
+            getContextMetadata_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.ContextMetadataRequest.fromBuffer(value),
+            ($0.ContextMetadataReply value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.TabularReply> getTabular_Pre(
@@ -75,8 +99,16 @@ abstract class TabularServiceBase extends $grpc.Service {
     return getContexts(call, await request);
   }
 
+  $async.Future<$0.ContextMetadataReply> getContextMetadata_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.ContextMetadataRequest> request) async {
+    return getContextMetadata(call, await request);
+  }
+
   $async.Future<$0.TabularReply> getTabular(
       $grpc.ServiceCall call, $0.TabularRequest request);
   $async.Future<$0.ContextReply> getContexts(
       $grpc.ServiceCall call, $0.ContextRequest request);
+  $async.Future<$0.ContextMetadataReply> getContextMetadata(
+      $grpc.ServiceCall call, $0.ContextMetadataRequest request);
 }
