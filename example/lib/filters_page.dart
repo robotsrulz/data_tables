@@ -103,7 +103,7 @@ class _FiltersState extends State<FiltersPage> {
     var _entry = _metadata.entries[_metadata.currentContext];
     if (_entry == null) {
       _metadata
-          .loadMetadata(_metadata.currentContext)
+          .load(_metadata.currentContext)
           .then((_) => setState(() {}));
       return;
     }

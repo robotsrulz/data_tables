@@ -57,6 +57,33 @@ class _DataWidgetState extends State<DataWidget> {
     super.initState();
   }
 
+  void _reload(BuildContext context) {
+    final _currentContext =
+        Provider.of<ContextMetadata>(context, listen: false).currentContext;
+    if (_currentContext != null && _currentContext.length > 0) {
+      // final size = Provider.of<ContextMetadata>(context, listen: false)
+      //    .entries[_currentContext]
+      //    ?.filterValues?.length;
+      // print("size $size");
+      // Provider.of<ContextMetadata>(context, listen: false)
+      //    .entries[_currentContext]
+      //    ?.filterValues?.forEach((key, value) => print("key $key, value $value"));
+
+      Provider.of<ContextNodes>(context, listen: false).renew();
+      getCellsData(
+              _currentContext,
+              Provider.of<ContextMetadata>(context, listen: false)
+                  .entries[_currentContext]
+                  ?.filterValues
+                  ?.entries
+                  ?.map((e) => TabularRequest_Filter()
+                    ..key = e.key
+                    ..value = e.value)
+                  ?.toList())
+          .then((value) => _populateTable(value));
+    }
+  }
+
   void _sort<T>(
       Comparable<T> getField(CellData d), int columnIndex, bool ascending) {
     _items.sort((CellData a, CellData b) {
@@ -82,7 +109,10 @@ class _DataWidgetState extends State<DataWidget> {
   TreeViewController _treeViewController;
 
   _onLayoutDone(_) {
-    if (Provider.of<ContextMetadata>(context, listen: false).currentContext?.length ?? 0 == 0) {
+    if (Provider.of<ContextMetadata>(context, listen: false)
+            .currentContext
+            ?.length ??
+        0 == 0) {
       // _openDrawer();
     }
   }
@@ -143,7 +173,9 @@ class _DataWidgetState extends State<DataWidget> {
     );
 
     NativeDataTable _table;
-    if (_items?.length > 0) {
+    final _currentContext =
+        Provider.of<ContextMetadata>(context, listen: false).currentContext;
+    if (_currentContext != null && _currentContext.length > 0) {
       _table = NativeDataTable.builder(
         rowsPerPage: _rowsPerPage,
         itemCount: _items?.length ?? 0,
@@ -186,14 +218,7 @@ class _DataWidgetState extends State<DataWidget> {
         header: Text('$_headerText'),
         sortColumnIndex: _sortColumnIndex,
         sortAscending: _sortAscending,
-        onRefresh: () async {
-          final _currentContext = Provider.of<ContextMetadata>(context, listen: false).currentContext;
-          if (_currentContext?.length ?? 0 > 0) {
-            getCellsData(_currentContext)
-                .then((value) => _populateTable(value));
-          }
-          return null;
-        },
+        onRefresh: () async => _reload(context),
         onRowsPerPageChanged: (int value) {
           setState(() {
             _rowsPerPage = value;
@@ -217,7 +242,9 @@ class _DataWidgetState extends State<DataWidget> {
           ),
           IconButton(
             icon: Icon(Icons.filter_list),
-            onPressed: () => Navigator.of(context).pushNamed('/filters'),
+            onPressed: () => Navigator.of(context)
+                .pushNamed('/filters')
+                .then((value) => _reload(context)),
           ),
         ],
         selectedActions: <Widget>[
@@ -256,27 +283,29 @@ class _DataWidgetState extends State<DataWidget> {
                       titleTextStyle: Theme.of(context)
                           .typography
                           .dense
-                          .display1
+                          .headline4
                           .copyWith(color: Color(0xff9da9c7)),
                       subtitleTextStyle: Theme.of(context)
                           .typography
                           .dense
-                          .body2
+                          .bodyText1
                           .copyWith(color: Color(0xffabb8d6))))),
       // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: _table == null ? Container(
-        padding: EdgeInsets.only(bottom: 30.0),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: FloatingActionButton.extended(
-            onPressed: () {
-              _openDrawer();
-            },
-            icon: Icon(Icons.accessibility),
-            label: Text('Cюда!'),
-          ),
-        ),
-      ) : null,
+      floatingActionButton: _table == null
+          ? Container(
+              padding: EdgeInsets.only(bottom: 30.0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: FloatingActionButton.extended(
+                  onPressed: () {
+                    _openDrawer();
+                  },
+                  icon: Icon(Icons.accessibility),
+                  label: Text('Cюда!'),
+                ),
+              ),
+            )
+          : null,
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -288,10 +317,13 @@ class _DataWidgetState extends State<DataWidget> {
           onNodeTap: (key) {
             debugPrint('Selected: $key');
             setState(() {
-              if (Provider.of<ContextMetadata>(context, listen: false).currentContext != key) {
+              if (Provider.of<ContextMetadata>(context, listen: false)
+                      .currentContext !=
+                  key) {
                 _rowsOffset = 0;
               }
-              Provider.of<ContextMetadata>(context, listen: false).currentContext = key;
+              Provider.of<ContextMetadata>(context, listen: false)
+                  .currentContext = key;
               _treeViewController =
                   _treeViewController.copyWith(selectedKey: key);
             });
