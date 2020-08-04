@@ -38,6 +38,7 @@ message ContextMetadataReply {
 
   message SubContext {
     string name = 1;
+    string key = 2;
   }
   repeated Filter filters = 1;
   repeated SubContext subContexts = 2;
@@ -61,7 +62,7 @@ message TabularRequest {
     string value = 2;
   }
   string context = 1;
-  repeated Filter parameters = 2;
+  repeated Filter filters = 2;
 }
 
 message TabularReply {

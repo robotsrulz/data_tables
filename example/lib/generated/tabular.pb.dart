@@ -133,6 +133,7 @@ class ContextMetadataReply_Filter extends $pb.GeneratedMessage {
 class ContextMetadataReply_SubContext extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('ContextMetadataReply.SubContext', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'name')
+    ..aOS(2, 'key')
     ..hasRequiredFields = false
   ;
 
@@ -159,6 +160,15 @@ class ContextMetadataReply_SubContext extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
   void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get key => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set key($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasKey() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearKey() => clearField(2);
 }
 
 class ContextMetadataReply extends $pb.GeneratedMessage {
@@ -335,7 +345,7 @@ class TabularRequest_Filter extends $pb.GeneratedMessage {
 class TabularRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('TabularRequest', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'context')
-    ..pc<TabularRequest_Filter>(2, 'parameters', $pb.PbFieldType.PM, subBuilder: TabularRequest_Filter.create)
+    ..pc<TabularRequest_Filter>(2, 'filters', $pb.PbFieldType.PM, subBuilder: TabularRequest_Filter.create)
     ..hasRequiredFields = false
   ;
 
@@ -364,7 +374,7 @@ class TabularRequest extends $pb.GeneratedMessage {
   void clearContext() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<TabularRequest_Filter> get parameters => $_getList(1);
+  $core.List<TabularRequest_Filter> get filters => $_getList(1);
 }
 
 class TabularReply_Header extends $pb.GeneratedMessage {

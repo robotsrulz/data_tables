@@ -31,6 +31,7 @@ class _DataWidgetState extends State<DataWidget> {
   bool _sortAscending = true;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  String _dropdownValue = "";
 
   void _openDrawer() {
     _scaffoldKey.currentState.openDrawer();
@@ -173,8 +174,17 @@ class _DataWidgetState extends State<DataWidget> {
     );
 
     NativeDataTable _table;
-    final _currentContext =
-        Provider.of<ContextMetadata>(context, listen: false).currentContext;
+    ContextMetadata _metadata =
+        Provider.of<ContextMetadata>(context, listen: false);
+    final _currentContext = _metadata.currentContext;
+
+    var _entry = _metadata.entries[_metadata.currentContext];
+    if (_entry == null &&
+        _metadata.currentContext != null &&
+        _metadata.currentContext.length > 0) {
+      _metadata.load(_metadata.currentContext).then((_) => setState(() {}));
+    }
+
     if (_currentContext != null && _currentContext.length > 0) {
       _table = NativeDataTable.builder(
         rowsPerPage: _rowsPerPage,
@@ -248,19 +258,50 @@ class _DataWidgetState extends State<DataWidget> {
           ),
         ],
         selectedActions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.delete),
-            onPressed: () {
+          DropdownButton<String>(
+            value: _dropdownValue,
+            icon: Icon(Icons.arrow_downward),
+            iconSize: 24,
+            elevation: 16,
+            style: TextStyle(color: Colors.blue),
+            underline: Container(
+              height: 2,
+              color: Colors.blue,
+            ),
+            onChanged: (String newValue) {
               setState(() {
-                for (var item in _items
-                    ?.where((d) => d?.selected ?? false)
-                    ?.toSet()
-                    ?.toList()) {
-                  _items.remove(item);
-                }
+                _dropdownValue = newValue;
               });
             },
+            items: <DropdownMenuItem<String>>[
+              DropdownMenuItem<String>(
+                value: '',
+                child: Text(''),
+              ),
+              ..._entry?.reply?.subContexts
+                      ?.map((e) => DropdownMenuItem<String>(
+                            value: e.key,
+                            child: Text(e.name),
+                          ))
+                      ?.toList() ??
+                  []
+            ],
           ),
+          RaisedButton.icon(
+              icon: Icon(Icons.play_arrow),
+              label: Text('Выполнить'),
+              textColor: Colors.white,
+              disabledTextColor: Colors.grey,
+              onPressed: () => _dropdownValue?.length == 0
+                  ? null
+                  : setState(() {
+                      for (var item in _items
+                          ?.where((d) => d?.selected ?? false)
+                          ?.toSet()
+                          ?.toList()) {
+                        // _items.remove(item);
+                      }
+                    })),
         ],
         mobileIsLoading: CircularProgressIndicator(),
         noItems: Text("No Items Found"),
@@ -321,6 +362,7 @@ class _DataWidgetState extends State<DataWidget> {
                       .currentContext !=
                   key) {
                 _rowsOffset = 0;
+                _dropdownValue = "";
               }
               Provider.of<ContextMetadata>(context, listen: false)
                   .currentContext = key;

@@ -51,7 +51,7 @@ Future<TabularReply> getCellsDataWeb(String context,
     _response = await stub.getTabular(
         TabularRequest()
           ..context = context
-          ..parameters.addAll(filters),
+          ..filters.addAll(filters),
         options: CallOptions(timeout: Duration(seconds: 10)));
 
     _response?.rows?.forEach((element) {

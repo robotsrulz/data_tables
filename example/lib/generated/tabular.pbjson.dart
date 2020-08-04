@@ -52,6 +52,7 @@ const ContextMetadataReply_SubContext$json = const {
   '1': 'SubContext',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
   ],
 };
 
@@ -84,7 +85,7 @@ const TabularRequest$json = const {
   '1': 'TabularRequest',
   '2': const [
     const {'1': 'context', '3': 1, '4': 1, '5': 9, '10': 'context'},
-    const {'1': 'parameters', '3': 2, '4': 3, '5': 11, '6': '.tabular.TabularRequest.Filter', '10': 'parameters'},
+    const {'1': 'filters', '3': 2, '4': 3, '5': 11, '6': '.tabular.TabularRequest.Filter', '10': 'filters'},
   ],
   '3': const [TabularRequest_Filter$json],
 };
