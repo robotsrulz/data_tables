@@ -89,11 +89,12 @@ class _FiltersState extends State<FiltersPage> {
         ),
         body: Container(
             padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: _filters)));
+            child: SingleChildScrollView(
+                child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: _filters))));
   }
 
   void getFilters() {
@@ -102,9 +103,7 @@ class _FiltersState extends State<FiltersPage> {
 
     var _entry = _metadata.entries[_metadata.currentContext];
     if (_entry == null) {
-      _metadata
-          .load(_metadata.currentContext)
-          .then((_) => setState(() {}));
+      _metadata.load(_metadata.currentContext).then((_) => setState(() {}));
       return;
     }
   }

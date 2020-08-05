@@ -10,6 +10,7 @@ class _MetadataEntry {
 
 class ContextMetadata with ChangeNotifier {
   String currentContext;
+
   Map<String, _MetadataEntry> entries = new Map();
 
   Future load(String context) async {

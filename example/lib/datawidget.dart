@@ -3,11 +3,13 @@ import 'package:data_tables_example/context_nodes.dart';
 import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
 import 'package:data_tables_example/get_data.dart';
+import 'package:data_tables_example/string_nodes.dart';
 import 'package:empty_widget/empty_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_treeview/tree_view.dart';
 import 'package:provider/provider.dart';
+import 'package:tuple/tuple.dart';
 
 import 'context_metadata.dart';
 
@@ -292,16 +294,22 @@ class _DataWidgetState extends State<DataWidget> {
               label: Text('Выполнить'),
               textColor: Colors.white,
               disabledTextColor: Colors.grey,
-              onPressed: () => _dropdownValue?.length == 0
-                  ? null
-                  : setState(() {
-                      for (var item in _items
-                          ?.where((d) => d?.selected ?? false)
-                          ?.toSet()
-                          ?.toList()) {
-                        // _items.remove(item);
-                      }
-                    })),
+              onPressed: () {
+                Provider.of<StringNodes>(context, listen: false).items.clear();
+                for (var item in _items
+                    ?.where((d) => d?.selected ?? false)
+                    ?.toSet()
+                    ?.toList()) {
+                  int index = 0;
+                  Provider.of<StringNodes>(context, listen: false).add(
+                      _dropdownValue,
+                      item.row.cells
+                          .map((e) => Tuple2<String, String>(
+                              _headers[index++].label, e.value))
+                          .toList());
+                }
+                Navigator.of(context).pushNamed('/strings');
+              }),
         ],
         mobileIsLoading: CircularProgressIndicator(),
         noItems: Text("No Items Found"),

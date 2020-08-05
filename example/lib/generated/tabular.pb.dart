@@ -301,6 +301,123 @@ class ContextReply extends $pb.GeneratedMessage {
   $core.List<ContextReply_Group> get groups => $_getList(0);
 }
 
+class StringRequest_Filter extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StringRequest.Filter', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'key')
+    ..aOS(2, 'value')
+    ..hasRequiredFields = false
+  ;
+
+  StringRequest_Filter._() : super();
+  factory StringRequest_Filter() => create();
+  factory StringRequest_Filter.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StringRequest_Filter.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  StringRequest_Filter clone() => StringRequest_Filter()..mergeFromMessage(this);
+  StringRequest_Filter copyWith(void Function(StringRequest_Filter) updates) => super.copyWith((message) => updates(message as StringRequest_Filter));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StringRequest_Filter create() => StringRequest_Filter._();
+  StringRequest_Filter createEmptyInstance() => create();
+  static $pb.PbList<StringRequest_Filter> createRepeated() => $pb.PbList<StringRequest_Filter>();
+  @$core.pragma('dart2js:noInline')
+  static StringRequest_Filter getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StringRequest_Filter>(create);
+  static StringRequest_Filter _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get key => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set key($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasKey() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKey() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get value => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set value($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasValue() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValue() => clearField(2);
+}
+
+class StringRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StringRequest', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'context')
+    ..pc<StringRequest_Filter>(2, 'filters', $pb.PbFieldType.PM, subBuilder: StringRequest_Filter.create)
+    ..hasRequiredFields = false
+  ;
+
+  StringRequest._() : super();
+  factory StringRequest() => create();
+  factory StringRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StringRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  StringRequest clone() => StringRequest()..mergeFromMessage(this);
+  StringRequest copyWith(void Function(StringRequest) updates) => super.copyWith((message) => updates(message as StringRequest));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StringRequest create() => StringRequest._();
+  StringRequest createEmptyInstance() => create();
+  static $pb.PbList<StringRequest> createRepeated() => $pb.PbList<StringRequest>();
+  @$core.pragma('dart2js:noInline')
+  static StringRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StringRequest>(create);
+  static StringRequest _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get context => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set context($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasContext() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearContext() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<StringRequest_Filter> get filters => $_getList(1);
+}
+
+class StringReply extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('StringReply', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
+    ..aOS(1, 'label')
+    ..aOS(2, 'value')
+    ..hasRequiredFields = false
+  ;
+
+  StringReply._() : super();
+  factory StringReply() => create();
+  factory StringReply.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StringReply.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  StringReply clone() => StringReply()..mergeFromMessage(this);
+  StringReply copyWith(void Function(StringReply) updates) => super.copyWith((message) => updates(message as StringReply));
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static StringReply create() => StringReply._();
+  StringReply createEmptyInstance() => create();
+  static $pb.PbList<StringReply> createRepeated() => $pb.PbList<StringReply>();
+  @$core.pragma('dart2js:noInline')
+  static StringReply getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StringReply>(create);
+  static StringReply _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get label => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set label($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasLabel() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearLabel() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get value => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set value($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasValue() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearValue() => clearField(2);
+}
+
 class TabularRequest_Filter extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('TabularRequest.Filter', package: const $pb.PackageName('tabular'), createEmptyInstance: create)
     ..aOS(1, 'key')

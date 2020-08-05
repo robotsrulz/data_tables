@@ -17,7 +17,7 @@ dependencies:
   protobuf: ^1.0.1
   flutter_treeview: ^0.4.2+1
   empty_widget: ^0.0.1
-  # tuple: ^1.0.3
+  tuple: ^1.0.3
   provider: ^4.3.1
 
 dev_dependencies:

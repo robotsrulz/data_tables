@@ -81,6 +81,31 @@ const ContextReply_Group_Context$json = const {
   ],
 };
 
+const StringRequest$json = const {
+  '1': 'StringRequest',
+  '2': const [
+    const {'1': 'context', '3': 1, '4': 1, '5': 9, '10': 'context'},
+    const {'1': 'filters', '3': 2, '4': 3, '5': 11, '6': '.tabular.StringRequest.Filter', '10': 'filters'},
+  ],
+  '3': const [StringRequest_Filter$json],
+};
+
+const StringRequest_Filter$json = const {
+  '1': 'Filter',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+};
+
+const StringReply$json = const {
+  '1': 'StringReply',
+  '2': const [
+    const {'1': 'label', '3': 1, '4': 1, '5': 9, '10': 'label'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+};
+
 const TabularRequest$json = const {
   '1': 'TabularRequest',
   '2': const [

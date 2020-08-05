@@ -19,6 +19,11 @@ class TabularClient extends $grpc.Client {
           '/tabular.Tabular/GetTabular',
           ($0.TabularRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.TabularReply.fromBuffer(value));
+  static final _$getString =
+      $grpc.ClientMethod<$0.StringRequest, $0.StringReply>(
+          '/tabular.Tabular/GetString',
+          ($0.StringRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.StringReply.fromBuffer(value));
   static final _$getContexts =
       $grpc.ClientMethod<$0.ContextRequest, $0.ContextReply>(
           '/tabular.Tabular/GetContexts',
@@ -38,6 +43,13 @@ class TabularClient extends $grpc.Client {
       {$grpc.CallOptions options}) {
     final call = $createCall(
         _$getTabular, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
+  }
+
+  $grpc.ResponseFuture<$0.StringReply> getString($0.StringRequest request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$getString, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseFuture(call);
   }
@@ -71,6 +83,13 @@ abstract class TabularServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.TabularRequest.fromBuffer(value),
         ($0.TabularReply value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.StringRequest, $0.StringReply>(
+        'GetString',
+        getString_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.StringRequest.fromBuffer(value),
+        ($0.StringReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.ContextRequest, $0.ContextReply>(
         'GetContexts',
         getContexts_Pre,
@@ -94,6 +113,11 @@ abstract class TabularServiceBase extends $grpc.Service {
     return getTabular(call, await request);
   }
 
+  $async.Future<$0.StringReply> getString_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.StringRequest> request) async {
+    return getString(call, await request);
+  }
+
   $async.Future<$0.ContextReply> getContexts_Pre(
       $grpc.ServiceCall call, $async.Future<$0.ContextRequest> request) async {
     return getContexts(call, await request);
@@ -107,6 +131,8 @@ abstract class TabularServiceBase extends $grpc.Service {
 
   $async.Future<$0.TabularReply> getTabular(
       $grpc.ServiceCall call, $0.TabularRequest request);
+  $async.Future<$0.StringReply> getString(
+      $grpc.ServiceCall call, $0.StringRequest request);
   $async.Future<$0.ContextReply> getContexts(
       $grpc.ServiceCall call, $0.ContextRequest request);
   $async.Future<$0.ContextMetadataReply> getContextMetadata(

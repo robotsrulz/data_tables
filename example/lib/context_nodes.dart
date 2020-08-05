@@ -17,11 +17,13 @@ class ContextNodes with ChangeNotifier {
           label: element.name,
           key: element.name,
           icon: NodeIcon.fromIconData(Icons.collections),
-          children: element.contexts.map((e) => Node(
-            label: e.name,
-            key: e.key,
-            icon: NodeIcon.fromIconData(Icons.cloud_download),
-          )).toList(),
+          children: element.contexts
+              .map((e) => Node(
+                    label: e.name,
+                    key: e.key,
+                    icon: NodeIcon.fromIconData(Icons.cloud_download),
+                  ))
+              .toList(),
         ));
       });
       notifyListeners();

@@ -1,6 +1,7 @@
 import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
 import 'package:grpc/grpc_web.dart';
+import 'package:tuple/tuple.dart';
 
 GrpcWebClientChannel getChannel() =>
     GrpcWebClientChannel.xhr(Uri.parse('http://localhost:51051'));
@@ -31,6 +32,29 @@ Future<ContextReply> getContextsWeb(String unused) async {
   try {
     print('Attempting to get contexts...');
     _response = await stub.getContexts(ContextRequest()..unused = unused,
+        options: CallOptions(timeout: Duration(seconds: 10)));
+  } catch (e) {
+    print(e.toString());
+  }
+
+  await channel.shutdown();
+  return _response;
+}
+
+Future<StringReply> getStringWeb(String subContext,
+    [List<Tuple2<String, String>> filters = const []]) async {
+  final channel = getChannel();
+  final stub = TabularClient(channel);
+
+  StringReply _response;
+  try {
+    print('Attempting to get contexts...');
+    _response = await stub.getString(
+        StringRequest()
+          ..context = subContext
+          ..filters.addAll(filters.map((e) => StringRequest_Filter()
+            ..key = e.item1
+            ..value = e.item2)),
         options: CallOptions(timeout: Duration(seconds: 10)));
   } catch (e) {
     print(e.toString());

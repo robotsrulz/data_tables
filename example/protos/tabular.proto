@@ -10,6 +10,7 @@ package tabular;
 
 service Tabular {
   rpc GetTabular (TabularRequest) returns (TabularReply) {}
+  rpc GetString (StringRequest) returns (StringReply) {}
   rpc GetContexts (ContextRequest) returns (ContextReply) {}
   rpc GetContextMetadata (ContextMetadataRequest) returns (ContextMetadataReply) {}
 }
@@ -54,6 +55,20 @@ message ContextReply {
     repeated Context contexts = 2;
   }
   repeated Group groups = 1;
+}
+
+message StringRequest {
+  message Filter {
+    string key = 1;
+    string value = 2;
+  }
+  string context = 1;
+  repeated Filter filters = 2;
+}
+
+message StringReply {
+  string label = 1;
+  string value = 2;
 }
 
 message TabularRequest {
