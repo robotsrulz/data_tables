@@ -1,5 +1,5 @@
-import 'package:data_tables/data_tables.dart';
 import 'package:data_tables_example/context_nodes.dart';
+import 'package:data_tables_example/data_tables.dart';
 import 'package:data_tables_example/generated/tabular.pb.dart';
 import 'package:data_tables_example/generated/tabular.pbgrpc.dart';
 import 'package:data_tables_example/get_data.dart';
@@ -45,10 +45,16 @@ class _DataWidgetState extends State<DataWidget> {
 
   void _populateTable(TabularReply reply) {
     setState(() {
-      List<CellData> cells = new List<CellData>();
-      reply?.rows?.forEach((element) => cells.add(CellData(element)));
-      _items = cells;
-      _headers = reply?.headers;
+      _columns = reply?.headers
+          ?.map((e) => DataColumn(
+              label: Text('${e.label}'),
+              onSort: (int columnIndex, bool ascending) => _sort<String>(
+                  (CellData r) => r.row.cells[columnIndex].toString(),
+                  columnIndex,
+                  ascending)))
+          ?.toList();
+
+      _items = reply?.rows?.map((element) => CellData(element))?.toList();
       _headerText = reply?.label;
     });
   }
@@ -106,7 +112,7 @@ class _DataWidgetState extends State<DataWidget> {
   }
 
   List<CellData> _items = [];
-  List<TabularReply_Header> _headers = [];
+  List<DataColumn> _columns = [];
   String _headerText = "";
   int _rowsOffset = 0;
   TreeViewController _treeViewController;
@@ -122,63 +128,13 @@ class _DataWidgetState extends State<DataWidget> {
 
   @override
   Widget build(BuildContext context) {
-    List<DataColumn> columns = new List<DataColumn>();
-    _headers?.forEach((element) => columns.add(
-          DataColumn(
-              label: Text('${element.label}'),
-              onSort: (int columnIndex, bool ascending) => _sort<String>(
-                  (CellData d) => d.row.cells[columnIndex].value,
-                  columnIndex,
-                  ascending)),
-        ));
-
-    if (0 == columns.length) columns.add(DataColumn(label: Text('')));
-
     _treeViewController = _treeViewController.copyWith(
       children: Provider.of<ContextNodes>(context).nodes,
-    );
-
-    TreeViewTheme _treeViewTheme = TreeViewTheme(
-      expanderTheme: ExpanderThemeData(
-        type: ExpanderType.caret,
-        modifier: ExpanderModifier.none,
-        position: ExpanderPosition.start,
-        color: Colors.grey.shade800,
-        size: 20,
-      ),
-      labelStyle: TextStyle(
-        fontSize: 16,
-        letterSpacing: 0.3,
-      ),
-      parentLabelStyle: TextStyle(
-        fontSize: 16,
-        letterSpacing: 0.1,
-        fontWeight: FontWeight.w800,
-        color: Colors.blue.shade700,
-      ),
-      iconTheme: IconThemeData(
-        size: 18,
-        color: Colors.grey.shade800,
-      ),
-      colorScheme: Theme.of(context).brightness == Brightness.light
-          ? ColorScheme.light(
-              primary: Colors.blue.shade50,
-              onPrimary: Colors.grey.shade900,
-              background: Colors.transparent,
-              onBackground: Colors.black,
-            )
-          : ColorScheme.dark(
-              primary: Colors.black26,
-              onPrimary: Colors.white,
-              background: Colors.transparent,
-              onBackground: Colors.white70,
-            ),
     );
 
     NativeDataTable _table;
     ContextMetadata _metadata =
         Provider.of<ContextMetadata>(context, listen: false);
-    final _currentContext = _metadata.currentContext;
 
     var _entry = _metadata.entries[_metadata.currentContext];
     if (_entry == null &&
@@ -187,7 +143,7 @@ class _DataWidgetState extends State<DataWidget> {
       _metadata.load(_metadata.currentContext).then((_) => setState(() {}));
     }
 
-    if (_currentContext != null && _currentContext.length > 0) {
+    if (_columns.length > 0) {
       _table = NativeDataTable.builder(
         rowsPerPage: _rowsPerPage,
         itemCount: _items?.length ?? 0,
@@ -207,26 +163,16 @@ class _DataWidgetState extends State<DataWidget> {
             if (_rowsOffset < 0) _rowsOffset = 0;
           });
         },
-        itemBuilder: (int index) {
-          final CellData cellData = _items[index];
-
-          List<DataCell> cells = [];
-          cellData.row?.cells?.forEach(
-              (element) => cells.add(DataCell(Text('${element.value}'))));
-          if (0 == cellData.row?.cells?.length) cells.add(DataCell(Text('')));
-
-          return DataRow.byIndex(
-              index: index,
-              selected: cellData.selected,
-              onSelectChanged: (bool value) {
-                if (cellData.selected != value) {
-                  setState(() {
-                    cellData.selected = value;
-                  });
-                }
-              },
-              cells: cells);
-        },
+        rows: _items
+            .map((e) => DataRow(
+                cells: e.row.cells
+                    .map((e) => DataCell(Text(e.value), onTap: () {}))
+                    .toList(),
+                selected: e.selected ?? false,
+                onSelectChanged: (val) => setState(() {
+                      e.selected = val;
+                    })))
+            .toList(),
         header: Text('$_headerText'),
         sortColumnIndex: _sortColumnIndex,
         sortAscending: _sortAscending,
@@ -237,13 +183,9 @@ class _DataWidgetState extends State<DataWidget> {
           });
           print("New Rows: $value");
         },
-        onSelectAll: (bool value) {
-          for (var row in _items) {
-            setState(() {
-              row.selected = value;
-            });
-          }
-        },
+        onSelectAll: (value) => setState(() => _items.forEach((element) {
+              element.selected = value;
+            })),
         rowCountApproximate: false,
         actions: <Widget>[
           IconButton(
@@ -301,86 +243,45 @@ class _DataWidgetState extends State<DataWidget> {
                     ?.toSet()
                     ?.toList()) {
                   int index = 0;
+                  // item.row.cells.forEach((element) {
+                  //  debugPrint((_columns[index++].label as Text).data);
+                  // });
+                  // index = 0;
                   Provider.of<StringNodes>(context, listen: false).add(
                       _dropdownValue,
                       item.row.cells
                           .map((e) => Tuple2<String, String>(
-                              _headers[index++].label, e.value))
+                              (_columns[index++].label as Text).data, e.value))
                           .toList());
                 }
                 Navigator.of(context).pushNamed('/strings');
               }),
         ],
-        mobileIsLoading: CircularProgressIndicator(),
         noItems: Text("No Items Found"),
-        columns: columns,
+        columns: _columns,
       );
     }
 
     return Scaffold(
       key: _scaffoldKey,
-      body: _table ??
-          Center(
-              child: Container(
-                  height: 500,
-                  width: 350,
-                  child: EmptyListWidget(
-                      image: null,
-                      packageImage: PackageImage.Image_1,
-                      title: 'Ого, как пусто!',
-                      subTitle: 'Нажми куда-нибудь...',
-                      titleTextStyle: Theme.of(context)
-                          .typography
-                          .dense
-                          .headline4
-                          .copyWith(color: Color(0xff9da9c7)),
-                      subtitleTextStyle: Theme.of(context)
-                          .typography
-                          .dense
-                          .bodyText1
-                          .copyWith(color: Color(0xffabb8d6))))),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: _table == null
-          ? Container(
-              padding: EdgeInsets.only(bottom: 30.0),
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: FloatingActionButton.extended(
-                  onPressed: () {
-                    _openDrawer();
-                  },
-                  icon: Icon(Icons.accessibility),
-                  label: Text('Cюда!'),
-                ),
-              ),
+      body: _table != null
+          ? Column(
+              children: [
+                Expanded(child: _table),
+                _items.fold(0, (p, c) => p + (c.selected ? 1 : 0)) == 1
+                    ? Column(children: [_detailsWrap()])
+                    : Container()
+              ],
             )
-          : null,
+          : _emptyContainer(),
+      floatingActionButton: _table == null ? _floatingButton() : null,
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: TreeView(
-          theme: _treeViewTheme,
+          theme: _treeViewTheme(),
           controller: _treeViewController,
-          onExpansionChanged: (key, expanded) => _expandNode(key, expanded),
-          onNodeTap: (key) {
-            debugPrint('Selected: $key');
-            setState(() {
-              if (Provider.of<ContextMetadata>(context, listen: false)
-                      .currentContext !=
-                  key) {
-                _rowsOffset = 0;
-                _dropdownValue = "";
-              }
-              Provider.of<ContextMetadata>(context, listen: false)
-                  .currentContext = key;
-              _treeViewController =
-                  _treeViewController.copyWith(selectedKey: key);
-            });
-
-            getCellsData(key).then((value) => _populateTable(value));
-            _closeDrawer();
-          },
+          onExpansionChanged: (key, expanded) =>
+              _expandTreeViewNode(key, expanded),
+          onNodeTap: (key) => _tapTreeViewNode(key),
         ),
       ),
       // Disable opening the drawer with a swipe gesture.
@@ -388,7 +289,32 @@ class _DataWidgetState extends State<DataWidget> {
     );
   }
 
-  _expandNode(String key, bool expanded) {
+  Widget _detailsWrap() {
+    return Wrap(
+      spacing: 20,
+      children: [
+        ...List<int>.generate(5, (i) => i + 1)
+            .map((e) =>
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  ...List<int>.generate(5, (i) => i + 1)
+                      .map((r) => Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text.rich(TextSpan(
+                                  text: "Field ${e * 10 + r} ",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold))),
+                              Text("Value")
+                            ],
+                          ))
+                      .toList()
+                ]))
+            .toList()
+      ],
+    );
+  }
+
+  _expandTreeViewNode(String key, bool expanded) {
     String msg = '${expanded ? "Expanded" : "Collapsed"}: $key';
     debugPrint(msg);
     Node node = _treeViewController.getNode(key);
@@ -414,5 +340,98 @@ class _DataWidgetState extends State<DataWidget> {
         _treeViewController = _treeViewController.copyWith(children: updated);
       });
     }
+  }
+
+  _tapTreeViewNode(String key) {
+    debugPrint('Selected: $key');
+    setState(() {
+      if (Provider.of<ContextMetadata>(context, listen: false).currentContext !=
+          key) {
+        _rowsOffset = 0;
+        _dropdownValue = "";
+      }
+      Provider.of<ContextMetadata>(context, listen: false).currentContext = key;
+      _treeViewController = _treeViewController.copyWith(selectedKey: key);
+    });
+
+    getCellsData(key).then((value) => _populateTable(value));
+    _closeDrawer();
+  }
+
+  Widget _emptyContainer() {
+    return Center(
+        child: Container(
+            height: 500,
+            width: 350,
+            child: EmptyListWidget(
+                image: null,
+                packageImage: PackageImage.Image_1,
+                title: 'Ого, как пусто!',
+                subTitle: 'Нажми куда-нибудь...',
+                titleTextStyle: Theme.of(context)
+                    .typography
+                    .dense
+                    .headline4
+                    .copyWith(color: Color(0xff9da9c7)),
+                subtitleTextStyle: Theme.of(context)
+                    .typography
+                    .dense
+                    .bodyText1
+                    .copyWith(color: Color(0xffabb8d6)))));
+  }
+
+  Widget _floatingButton() {
+    return Container(
+      padding: EdgeInsets.only(bottom: 30.0),
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton.extended(
+          onPressed: () {
+            _openDrawer();
+          },
+          icon: Icon(Icons.accessibility),
+          label: Text('Cюда!'),
+        ),
+      ),
+    );
+  }
+
+  TreeViewTheme _treeViewTheme() {
+    return TreeViewTheme(
+      expanderTheme: ExpanderThemeData(
+        type: ExpanderType.caret,
+        modifier: ExpanderModifier.none,
+        position: ExpanderPosition.start,
+        color: Colors.grey.shade800,
+        size: 20,
+      ),
+      labelStyle: TextStyle(
+        fontSize: 16,
+        letterSpacing: 0.3,
+      ),
+      parentLabelStyle: TextStyle(
+        fontSize: 16,
+        letterSpacing: 0.1,
+        fontWeight: FontWeight.w800,
+        color: Colors.blue.shade700,
+      ),
+      iconTheme: IconThemeData(
+        size: 18,
+        color: Colors.grey.shade800,
+      ),
+      colorScheme: Theme.of(context).brightness == Brightness.light
+          ? ColorScheme.light(
+              primary: Colors.blue.shade50,
+              onPrimary: Colors.grey.shade900,
+              background: Colors.transparent,
+              onBackground: Colors.black,
+            )
+          : ColorScheme.dark(
+              primary: Colors.black26,
+              onPrimary: Colors.white,
+              background: Colors.transparent,
+              onBackground: Colors.white70,
+            ),
+    );
   }
 }

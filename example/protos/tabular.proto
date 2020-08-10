@@ -50,6 +50,9 @@ message ContextReply {
     message Context {
       string name = 1;
       string key = 2;
+
+      string detailsContextKey = 3;
+      string detailsTabularContextKey = 4;
     }
     string name = 1;
     repeated Context contexts = 2;

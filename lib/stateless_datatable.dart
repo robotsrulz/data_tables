@@ -337,9 +337,9 @@ class StatelessDataTable extends StatelessWidget {
                 // list and then tweak them appropriately.
                 // See https://material.io/design/components/data-tables.html#tables-within-cards
                 style: _selectedRowCount > 0
-                    ? themeData.textTheme.subhead
+                    ? themeData.textTheme.subtitle1
                         .copyWith(color: themeData.accentColor)
-                    : themeData.textTheme.title
+                    : themeData.textTheme.headline6
                         .copyWith(fontWeight: FontWeight.w400),
                 child: IconTheme.merge(
                   data: const IconThemeData(opacity: 0.54),
@@ -412,9 +412,9 @@ class StatelessDataTable extends StatelessWidget {
               // list and then tweak them appropriately.
               // See https://material.io/design/components/data-tables.html#tables-within-cards
               style: _selectedRowCount > 0
-                  ? themeData.textTheme.subhead
+                  ? themeData.textTheme.subtitle1
                       .copyWith(color: themeData.accentColor)
-                  : themeData.textTheme.title
+                  : themeData.textTheme.headline6
                       .copyWith(fontWeight: FontWeight.w400),
               child: IconTheme.merge(
                 data: const IconThemeData(opacity: 0.54),

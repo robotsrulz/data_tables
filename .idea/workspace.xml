@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca160bec-0575-4943-95ce-117072a81cb2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/example/lib/string_nodes.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example/lib/strings_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/context_metadata.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/context_metadata.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/context_nodes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/context_nodes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/datawidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/datawidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/filters_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/filters_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pb.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pbgrpc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbgrpc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/generated/tabular.pbjson.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/get_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/get_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/get_data_web.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/get_data_web.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/get_data_ws.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/get_data_ws.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/macos/Runner/Release.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/example/macos/Runner/Release.entitlements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/string_nodes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/string_nodes.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/protos/tabular.proto" beforeDir="false" afterPath="$PROJECT_DIR$/example/protos/tabular.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data_tables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/data_tables.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/stateless_datatable.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/stateless_datatable.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,22 +97,26 @@
       <screen x="0" y="23" width="1440" height="825" />
     </state>
     <state width="828" height="466" key="DebuggerActiveHint/0.23.1440.825@0.23.1440.825" timestamp="1596558651923" />
-    <state width="1398" height="198" key="GridCell.Tab.0.bottom" timestamp="1596629513418">
+    <state x="99" y="123" width="1240" height="625" key="DiffContextDialog" timestamp="1596799497555">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="198" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1596629513418" />
-    <state width="1398" height="198" key="GridCell.Tab.0.center" timestamp="1596629513417">
+    <state x="99" y="123" width="1240" height="625" key="DiffContextDialog/0.23.1440.825@0.23.1440.825" timestamp="1596799497555" />
+    <state width="1398" height="284" key="GridCell.Tab.0.bottom" timestamp="1597076615114">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="198" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1596629513417" />
-    <state width="1398" height="198" key="GridCell.Tab.0.left" timestamp="1596629513416">
+    <state width="1398" height="284" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1597076615114" />
+    <state width="1398" height="284" key="GridCell.Tab.0.center" timestamp="1597076615113">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="198" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1596629513416" />
-    <state width="1398" height="198" key="GridCell.Tab.0.right" timestamp="1596629513418">
+    <state width="1398" height="284" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1597076615113" />
+    <state width="1398" height="284" key="GridCell.Tab.0.left" timestamp="1597076615113">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
-    <state width="1398" height="198" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1596629513418" />
+    <state width="1398" height="284" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1597076615113" />
+    <state width="1398" height="284" key="GridCell.Tab.0.right" timestamp="1597076615114">
+      <screen x="0" y="23" width="1440" height="825" />
+    </state>
+    <state width="1398" height="284" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1597076615114" />
     <state x="273" y="128" key="IDE.errors.dialog" timestamp="1595319037898">
       <screen x="0" y="23" width="1440" height="825" />
     </state>
